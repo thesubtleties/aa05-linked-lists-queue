@@ -25,7 +25,6 @@ describe('Part 2: Linked Lists', () => {
     expect(list.listLength()).to.equal(4);
   });
 
-
   it('`sumOfNodes` returns the sum total of all nodes', () => {
 
     list.addToTail(1);
