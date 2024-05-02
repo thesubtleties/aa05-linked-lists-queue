@@ -93,21 +93,96 @@ class SinglyLinkedList {
     // Write your hypothesis on the time complexity of this method here O(n/2)
   }
 
+  addToHead(val) {
+    let newNode = new SinglyLinkedNode(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.length++;
+      return this.head;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+
+  }
+
   reverse() {
     // Returns a new reversed version of the linked list
     // Try implementing it by returning a new linked list then returning
     // the original linked list reversed in place
     // Does the time complexity change? How about space complexity?
     // Your code here
+
+    // let current = this.head;
+    // const newList = new SinglyLinkedList();
+    // if (current.next === null) return newList.addToTail(current.value);
+    // this.head = this.next;
+    // this.reverse()
+
+    // let newList = new SinglyLinkedList();
+    // let current = this.head;
+    // let tail;
+    // while (current) {
+    //     if (current.next === null) {
+    //         tail = current;
+    //     }
+    //     current = current.next;
+    // }
+
+    // while (tail) {
+        
+    //     newList.addToTail(tail.value);
+    //     if (tail.prev === null) return newList;
+    //     tail = tail.prev;
+    // }
+    let newList = new SinglyLinkedList();
+    let current = this.head;
+    while (current) {
+        newList.addToHead(current.value);
+        current = current.next;
+    }
+    return newList;
     // Write your hypothesis on the time complexity of this method here
   }
 
   reverseInPlace() {
     // Reverses the linked list in-place
     // Your code here
+    let current = this.head;
+    let pre = null;
+    let temp;
+    let last;
+    let count = 0;
+    while (current) {
+        if (current.next === null) {
+            current.next = 
+            this.head = current;
+            return this;
+        }
+        temp = current.next;
+        if (count === 0) {
+            current.next = null;
+        } else {
+            current.next.next = current;
+        }
+        current = temp;
+        count++;
+        
+    }
+
     // Write your hypothesis on the time complexity of this method here
   }
 }
+
+list = new SinglyLinkedList();
+list.addToTail(1);
+list.addToTail(2);
+list.addToTail(3);
+list.addToTail(4);
+list.addToTail(5);
+list.addToTail(6);
+console.log(list.reverseInPlace())
 
 class DoublyLinkedNode {
   constructor(val) {
